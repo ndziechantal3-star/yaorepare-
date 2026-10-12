@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "name": "Yaorepare",
+    "slug": "yaorepare",
+    "version": "1.0.0",
+    "android": { "package": "com.yaorepare.app" }
+  }
+}
