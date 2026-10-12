@@ -1,0 +1,46 @@
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+
+const services = [
+  { id: '1', nom: 'Plombier', prix: '5.000 FCFA', artisan: 'Jean - Bastos', photo: 'https://i.pravatar.cc/150?img=11' },
+  { id: '2', nom: 'Électricien', prix: '4.000 FCFA', artisan: 'Samuel - Mendong', photo: 'https://i.pravatar.cc/150?img=12' },
+  { id: '3', nom: 'Mécanicien', prix: '6.000 FCFA', artisan: 'Paul - Nsam', photo: 'https://i.pravatar.cc/150?img=13' },
+  { id: '4', nom: 'Maçon', prix: '7.000 FCFA', artisan: 'Luc - Mvan', photo: 'https://i.pravatar.cc/150?img=14' },
+  { id: '5', nom: 'Peintre', prix: '4.500 FCFA', artisan: 'Alain - Biyem', photo: 'https://i.pravatar.cc/150?img=15' },
+  { id: '6', nom: 'Menuisier', prix: '5.500 FCFA', artisan: 'Marc - Ekounou', photo: 'https://i.pravatar.cc/150?img=16' },
+  { id: '7', nom: 'Climatisation', prix: '8.000 FCFA', artisan: 'Eric - Etoudi', photo: 'https://i.pravatar.cc/150?img=17' },
+  { id: '8', nom: 'Soudeur', prix: '6.500 FCFA', artisan: 'David - Nkol', photo: 'https://i.pravatar.cc/150?img=18' },
+  { id: '9', nom: 'Carreleur', prix: '5.000 FCFA', artisan: 'Fabien - Melen', photo: 'https://i.pravatar.cc/150?img=19' },
+  { id: '10', nom: 'Jardinier', prix: '3.000 FCFA', artisan: 'Simon - Mimboman', photo: 'https://i.pravatar.cc/150?img=20' },
+];
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Yaorépare - Services Yaoundé</Text>
+      <FlatList
+        data={services}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <View style={styles.card}>
+            <Image source={{uri: item.photo}} style={styles.photo} />
+            <View style={{flex:1}}>
+              <Text style={styles.nom}>{item.nom} - {item.prix}</Text>
+              <Text style={styles.artisan}>{item.artisan}</Text>
+              <TouchableOpacity style={styles.btn}><Text style={styles.btnText}>Contacter</Text></TouchableOpacity>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: { flex:1, backgroundColor:'#f0f0f0', paddingTop:50, padding:15 },
+  title: { fontSize:20, fontWeight:'bold', textAlign:'center', marginBottom:20, color:'#0d47a1' },
+  card: { flexDirection:'row', backgroundColor:'white', padding:12, borderRadius:12, marginBottom:12, elevation:2 },
+  photo: { width:60, height:60, borderRadius:30, marginRight:12 },
+  nom: { fontWeight:'bold', fontSize:16 },
+  artisan: { color:'#666', marginVertical:4 },
+  btn: { backgroundColor:'#0d47a1', padding:6, borderRadius:6, marginTop:5, alignSelf:'flex-start' },
+  btnText: { color:'white', fontWeight:'bold' }
+});
